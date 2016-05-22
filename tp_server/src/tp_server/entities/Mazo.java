@@ -1,7 +1,11 @@
 package tp_server.entities;
 
-public class Mazo {
+import java.util.List;
 
+public class Mazo {
+	private int idMazo;
+	private List<Carta> cartas;
+	
 	public Mazo() {
 		// TODO Auto-generated constructor stub
 	}

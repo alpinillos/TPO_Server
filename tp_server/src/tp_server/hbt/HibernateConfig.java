@@ -2,10 +2,7 @@ package tp_server.hbt;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-
-import entities.CartaEntity;
-import entities.JugadorEntity;
-
+import tp_server.entities.*;
 public class HibernateConfig {
 	 private static final SessionFactory sessionFactory;
 	    static
@@ -13,9 +10,7 @@ public class HibernateConfig {
 	        try
 	        {
 	        	 AnnotationConfiguration config = new AnnotationConfiguration();
-	             config.addAnnotatedClass(JugadorEntity.class);	    
-	             config.addAnnotatedClass(CartaEntity.class);	    
-	             
+	             config.addAnnotatedClass(Jugador.class);	    
 	             sessionFactory = config.buildSessionFactory();
 	        }
 	        catch (Throwable ex)
