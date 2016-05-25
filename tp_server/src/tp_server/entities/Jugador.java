@@ -10,9 +10,13 @@ private List<Partida> partidasJugadas;
 private List<Partida> partidasGanadas;
 private int puntos;
 
-public Jugador(Usuario usuario) {
+public Jugador(String apodo,String email) {
 	super();
-	this.usuario = usuario;
+	usuario = new Usuario();
+	usuario.setApodo(apodo);
+	usuario.setEmail(email);
+	categoria = "ninguna";
+	puntos = 0;
 }
 
 public Usuario getUsuario() {
