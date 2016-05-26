@@ -20,5 +20,9 @@ public class GroupManager {
 		return grupo;
 	}
 	
-
+	public void agregarJugador(Grupo grupo, Jugador jugador){
+		grupo.agregarJugador(jugador);
+		GrupoDAO.getInstance().grabarGrupo(grupo);
+	}
+	
 }

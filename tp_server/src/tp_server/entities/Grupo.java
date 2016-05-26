@@ -37,5 +37,7 @@ public class Grupo {
 	public void setJugadores(ArrayList<Jugador> jugadores) {
 		this.jugadores = jugadores;
 	}
-
+	public void agregarJugador(Jugador jugador){
+		jugadores.add(jugador);
+	}
 }
