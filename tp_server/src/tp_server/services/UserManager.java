@@ -15,7 +15,7 @@ public class UserManager {
 	public void altaJugador(String email,String apodo){
 		if (UserDAO.getInstance().buscarPorApodo(apodo) == null || UserDAO.getInstance().buscarPorEmail(email)== null) {
 			Jugador jugador = new Jugador(apodo,email);
-			
+			UserDAO.getInstance().grabarJugador(jugador);
 		}
 	}
 	
