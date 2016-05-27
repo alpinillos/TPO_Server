@@ -1,43 +1,61 @@
 package tp_server.entities;
+import javax.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name="Grupo")
 public class Grupo {
+	@Column(name = "IdGrupo")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idGrupo;
+	
+	@Column(name = "Nombre",nullable=false)
 	private String nombre;
-	private int idgrupo;
-	private Administrador admin;
-	private ArrayList<Jugador> jugadores; 
-	public Grupo(String nombre,Jugador jugador) {
-		this.nombre = nombre;
-		//this.idgrupo = id;
-		this.admin = new Administrador();
-		admin.setUsuario(jugador.getUsuario());
+	
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="IdGrupo")
+	private List<Pareja > parejas;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Jugador  administrador;
+	
+	public Grupo()
+	{
+		parejas = new ArrayList<Pareja >();
 	}
+
+	public int getIdGrupo() {
+		return idGrupo;
+	}
+
+	public void setIdGrupo(int idGrupo) {
+		this.idGrupo = idGrupo;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getIdgrupo() {
-		return idgrupo;
+
+	public List<Pareja > getParejas() {
+		return parejas;
 	}
-	public void setIdgrupo(int idgrupo) {
-		this.idgrupo = idgrupo;
+
+	public void setParejas(List<Pareja > parejas) {
+		this.parejas = parejas;
 	}
-	public Administrador getAdmin() {
-		return admin;
+
+	public Jugador getAdministrador() {
+		return administrador;
 	}
-	public void setAdmin(Administrador admin) {
-		this.admin = admin;
-	}
-	public ArrayList<Jugador> getJugadores() {
-		return jugadores;
-	}
-	public void setJugadores(ArrayList<Jugador> jugadores) {
-		this.jugadores = jugadores;
-	}
-	public void agregarJugador(Jugador jugador){
-		jugadores.add(jugador);
+
+	public void setAdministrador(Jugador  administrador) {
+		this.administrador = administrador;
 	}
 }

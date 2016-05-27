@@ -1,9 +1,10 @@
 package tp_server.entities;
 
-public class Cerrado extends Juego {
+import java.util.ArrayList;
 
-	public Cerrado() {
-		// TODO Auto-generated constructor stub
+public class Cerrado extends Juego{
+	
+	public Cerrado(){
+		partidas = new ArrayList<Partida>();
 	}
-
 }

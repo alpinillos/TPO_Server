@@ -1,28 +1,44 @@
 package tp_server.entities;
 
+import javax.persistence.*;
+
+import dto.CartaDTO;
+@Entity
+@Table(name="Carta")
 public class Carta {
 	
-	private int numero;
-	private String palo;
-	private int pesoTruco;
+	@EmbeddedId
+	private IdCarta idCarta;
 	
-	public Carta(int numero, String palo, int pesoTruco) {
-		super();
-		this.numero = numero;
-		this.palo = palo;
-		this.pesoTruco = pesoTruco;
+	@Column(name = "Valor",nullable=false)
+	private int valor;
+
+	
+	public int getValor() {
+		return valor;
 	}
 
-	public int getNumero() {
-		return numero;
+	public void setValor(int valor) {
+		this.valor = valor;
 	}
 
-	public String getPalo() {
-		return palo;
+	public Carta(IdCarta  idCarta, String palo)
+	{
+		this.idCarta = idCarta;
+		this.valor = valor;
+	}
+	
+	public CartaDTO GetDao()
+	{
+		return new CartaDTO( valor, idCarta.getPalo(), idCarta.getNumero());
 	}
 
-	public int getPesoTruco() {
-		return pesoTruco;
+	public IdCarta getIdCarta() {
+		return idCarta;
+	}
+
+	public void setIdCarta(IdCarta idCarta) {
+		this.idCarta = idCarta;
 	}
 
 }

@@ -1,63 +1,94 @@
 package tp_server.entities;
 
-import java.util.List;
+import javax.persistence.*;
 
-public class Jugador {
+import dto.JugadorDTO;
 
-private Usuario usuario;
-private String categoria;
-private List<Partida> partidasJugadas;
-private List<Partida> partidasGanadas;
-private int puntos;
+@Entity
+@Table(name="Jugador")
 
-public Jugador(String apodo,String email) {
-	super();
-	usuario = new Usuario();
-	usuario.setApodo(apodo);
-	usuario.setEmail(email);
-	categoria = "ninguna";
-	puntos = 0;
+public class Jugador implements Comparable<Jugador>{	
+	
+	@Column(name = "IdJugador")
+	@GeneratedValue(strategy=GenerationType.AUTO)	
+	private int IdJugador;
+	
+	@Column(name = "Apodo")
+	private String apodo;
+	
+	@Column(name = "Mail")
+	private String mail;
+
+	@Column(name = "Password")
+	private String password;
+	
+	@Column(name = "Puntaje")
+	private int puntaje;
+	
+	public Jugador(String apodo, String mail, String password, int puntaje)
+	{
+		this.apodo = apodo;
+		this.mail = mail;
+		this.password = password;
+		this.puntaje = puntaje;
+	}
+	
+	public int getId() {
+		return IdJugador;
+	}
+	public void setId(int id) {
+		this.IdJugador = id;
+	}
+	
+	public String getApodo() {
+		return apodo;
+	}
+	public void setApodo(String apodo) {
+		this.apodo = apodo;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Jugador(String apodo, String mail,
+			String Password) {		
+		this.apodo = apodo;
+		this.mail = mail;
+		this.password = Password;
+		this.puntaje = puntaje;
+	}	
+	
+	public void AgregarPuntos(int punto)
+	{
+		this.puntaje+=punto;
+	}
+	public int getIdJugador() {
+		return IdJugador;
+	}
+	public void setIdJugador(int idJugador) {
+		IdJugador = idJugador;
+	}
+	public int getPuntaje() {
+		return puntaje;
+	}
+	public void setPuntaje(int puntaje) {
+		this.puntaje = puntaje;
+	}
+
+	public JugadorDTO toDTO(){
+		return new JugadorDTO(this.mail,this.apodo,this.password);
+	}
+	
+	public int compareTo(Jugador ju) {
+		return Integer.compare(this.puntaje, ju.puntaje);
+	}
 }
-
-public Usuario getUsuario() {
-	return usuario;
-}
-
-public void setUsuario(Usuario usuario) {
-	this.usuario = usuario;
-}
-
-public String getCategoria() {
-	return categoria;
-}
-
-public void setCategoria(String categoria) {
-	this.categoria = categoria;
-}
-
-public List<Partida> getPartidasJugadas() {
-	return partidasJugadas;
-}
-
-public void setPartidasJugadas(List<Partida> partidasJugadas) {
-	this.partidasJugadas = partidasJugadas;
-}
-
-public List<Partida> getPartidasGanadas() {
-	return partidasGanadas;
-}
-
-public void setPartidasGanadas(List<Partida> partidasGanadas) {
-	this.partidasGanadas = partidasGanadas;
-}
-
-public int getPuntos() {
-	return puntos;
-}
-
-public void setPuntos(int puntos) {
-	this.puntos = puntos;
-}
-
-}
-

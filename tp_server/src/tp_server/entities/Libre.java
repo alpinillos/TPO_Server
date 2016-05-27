@@ -1,9 +1,10 @@
 package tp_server.entities;
 
-public class Libre extends Juego {
+import java.util.ArrayList;
 
-	public Libre() {
-		// TODO Auto-generated constructor stub
+public class Libre extends Juego{
+
+	public Libre(){
+		partidas = new ArrayList<Partida>();
 	}
-
 }

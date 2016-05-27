@@ -1,9 +1,18 @@
 package tp_server.entities;
 
-public class Juego {
-	private int idJuego;
-	public Juego() {
-		// TODO Auto-generated constructor stub
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Juego {
+
+	public List<Partida > partidas;
+
+	public List<Partida > getPartidas() {
+		return partidas;
 	}
 
+	public void setPartidas(List<Partida > partidas) {
+		this.partidas = partidas;
+	}
+	
 }

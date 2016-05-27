@@ -24,7 +24,6 @@ public class HibernateConfig {
 	             config.addAnnotatedClass(Mano.class);	
 	             config.addAnnotatedClass(Pareja.class);	
 	             config.addAnnotatedClass(Partida.class);	
-	             config.addAnnotatedClass(Ranking.class);	
 	             config.addAnnotatedClass(Registro.class);
 	             config.addAnnotatedClass(Usuario.class);             
 	             sessionFactory = config.buildSessionFactory();

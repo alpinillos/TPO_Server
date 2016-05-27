@@ -1,9 +1,22 @@
 package tp_server.entities;
 
-public class ItemMano {
+import javax.persistence.*;
 
-	public ItemMano() {
-		// TODO Auto-generated constructor stub
+@Entity
+@Table(name="Jugada" )
+public class ItemMano {
+	@EmbeddedId
+	private IdJugada idJugada;
+
+	public ItemMano(Jugador jugador, Carta carta)
+	{
+		this.idJugada = new IdJugada(jugador,carta);
+	}
+	public IdJugada getIdJugada() {
+		return idJugada;
 	}
 
+	public void setIdJugada(IdJugada idJugada) {
+		this.idJugada = idJugada;
+	}
 }
